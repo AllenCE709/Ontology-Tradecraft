@@ -2,7 +2,12 @@
 name: Autograde Project 2
 
 on:
+  on:
   pull_request:
+    paths:
+      - "projects/project-2/**"
+      - ".github/workflows/project2-tests.yml"
+  push:
     paths:
       - "projects/project-2/**"
       - ".github/workflows/project2-tests.yml"
