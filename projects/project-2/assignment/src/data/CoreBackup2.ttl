@@ -20,7 +20,6 @@
                                                    owl:versionIRI <http://purl.obolibrary.org/obo/iao/dev/iao-edit.owl> ;
                                                    owl:imports obo:bfo.owl ,
                                                                obo:omo.owl ,
-                                                               <http://purl.obolibrary.org/obo/bfo/2020/bfo-core.ttl> ,
                                                                <http://purl.obolibrary.org/obo/iao/dev/externalByHand.owl> ,
                                                                <http://purl.obolibrary.org/obo/iao/dev/import_COB.owl> ,
                                                                <http://purl.obolibrary.org/obo/iao/dev/import_OBI.owl> ,
@@ -3840,7 +3839,7 @@ iao-edit:Fixed_Wing rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Jet_Engine
 iao-edit:Jet_Engine rdf:type owl:Class ;
-                    rdfs:subClassOf iao-edit:Engine ;
+                    rdfs:subClassOf obo:BFO_0000040 ;
                     rdfs:label "Jet Engine" ;
                     <http://www.w3.org/2004/02/skos/core#definition> "An engine that creates forward thrust by pulling in air, burning it with fuel, and pushing hot exhaust gases out of the back at a high speed" .
 
