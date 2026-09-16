@@ -3763,7 +3763,7 @@ iao-edit:Aerospace_Engineering_and_Operations_Technologists_and_Technicians rdf:
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Aerospace_Engineers_Broad_Role
 iao-edit:Aerospace_Engineers_Broad_Role rdf:type owl:Class ;
                                         rdfs:subClassOf iao-edit:Occupation_Role ;
-                                        rdfs:label "Aerospace Engineers Broad Role" ;
+                                        rdfs:label "SOC: Aerospace Engineer Broad Role" ;
                                         <http://www.w3.org/2004/02/skos/core#definition> "Broad Category of Aerospace Engineers" .
 
 
