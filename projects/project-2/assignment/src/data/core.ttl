@@ -3756,21 +3756,21 @@ iao-edit:Adaptability_Evaluation_Report rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Aerospace_Engineering_and_Operations_Technologists_and_Technicians
 iao-edit:Aerospace_Engineering_and_Operations_Technologists_and_Technicians rdf:type owl:Class ;
                                                                             rdfs:subClassOf <http://purl.obolibrary.org/obo/iao/iao-edit.owl#Engineering_Technologists_and_Technicians,_Except_Drafters_Broad_Role> ;
-                                                                            rdfs:label "Aerospace Engineering and Operations Technologists and Technicians" ;
+                                                                            rdfs:label "SOC: aerospace engineer and Operations Technologists and Technicians" ;
                                                                             <http://www.w3.org/2004/02/skos/core#definition> "Aerospace Engineering and Operations Technologists and Technicians" .
 
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Aerospace_Engineers_Broad_Role
 iao-edit:Aerospace_Engineers_Broad_Role rdf:type owl:Class ;
                                         rdfs:subClassOf iao-edit:Occupation_Role ;
-                                        rdfs:label "SOC: Aerospace Engineer Broad Role" ;
+                                        rdfs:label "SOC: aerospace engineer Broad Role" ;
                                         <http://www.w3.org/2004/02/skos/core#definition> "Broad Category of Aerospace Engineers" .
 
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Aerospace_Engineers_Role
 iao-edit:Aerospace_Engineers_Role rdf:type owl:Class ;
                                   rdfs:subClassOf iao-edit:Aerospace_Engineers_Broad_Role ;
-                                  rdfs:label "Aerospace Engineers Role" ;
+                                  rdfs:label "SOC: aerospace engineer Role" ;
                                   <http://www.w3.org/2004/02/skos/core#definition> "Aerospace Engineers Role" .
 
 
