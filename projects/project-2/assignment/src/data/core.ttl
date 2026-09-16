@@ -150,6 +150,9 @@ rdfs:label rdf:type owl:AnnotationProperty .
 ###  http://www.w3.org/2000/01/rdf-schema#seeAlso
 rdfs:seeAlso rdf:type owl:AnnotationProperty .
 
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
 
 ###  http://xmlns.com/foaf/0.1/page
 foaf:page rdf:type owl:AnnotationProperty .
