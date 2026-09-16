@@ -3805,7 +3805,7 @@ iao-edit:Approach_Speed_Specification rdf:type owl:Class ;
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Artifact_Design
 iao-edit:Artifact_Design rdf:type owl:Class ;
                          rdfs:subClassOf obo:IAO_0000030 ;
-                         obo:IAO_0000115 "An information content entity that specifies characteristics intended for an artifact" ;
+                         skos:definition "An information content entity that specifies characteristics intended for an artifact" ;
                          rdfs:label "Artifact Design" .
 
 
