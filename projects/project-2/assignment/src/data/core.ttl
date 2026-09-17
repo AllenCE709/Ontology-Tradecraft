@@ -311,6 +311,7 @@ obo:IAO_0000407 rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf obo:BFO_0000051 ;
                 rdf:type owl:FunctionalProperty ;
                 rdfs:domain obo:IAO_0000400 ;
+                rdfs:range obo:UO_0000001 ;
                 rdfs:comment "relating a cartesian spatial coordinate datum to a unit label that together with the values represent a point"@en ;
                 rdfs:label "has coordinate unit label"@en .
 
@@ -931,12 +932,6 @@ iao-edit:has_mean_wage_PRSE rdf:type owl:DatatypeProperty ;
                             rdfs:label "has mean wage PRSE" .
 
 
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#has_measurement_unit
-iao-edit:has_measurement_unit rdf:type owl:DatatypeProperty ;
-                              rdfs:label "has measurement unit" ;
-                              <http://www.w3.org/2004/02/skos/core#definition> "states the unit of measure" .
-
-
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#has_model_BADA
 iao-edit:has_model_BADA rdf:type owl:DatatypeProperty ;
                         rdfs:domain iao-edit:aircraft ;
@@ -1051,13 +1046,132 @@ iao-edit:own_code rdf:type owl:DatatypeProperty ;
 #    Classes
 #################################################################
 
+###  http://purl.obolibrary.org/obo/APOLLO_SV_00000008
+obo:APOLLO_SV_00000008 rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( obo:COB_0000035
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty obo:OBI_0000299 ;
+                                                                    owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                         owl:unionOf ( obo:IAO_0000010
+                                                                                                       obo:IAO_0000096
+                                                                                                     )
+                                                                                       ]
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf obo:COB_0000035 ;
+                       obo:IAO_0000115 "A planned process that has specified output a software product and that involves the creation of source code."@en ;
+                       obo:IAO_0000117 "Mathias Brochhausen"@en ,
+                                       "William R. Hogan"@en ;
+                       obo:IAO_0000119 "http://en.wikipedia.org/wiki/Software_development" ;
+                       obo:IAO_0000600 "A planned process resulting in a software product involving the creation of source code."@en ;
+                       rdfs:label "software development"@en .
+
+
 ###  http://purl.obolibrary.org/obo/APOLLO_SV_00000032
 obo:APOLLO_SV_00000032 rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( obo:IAO_0000027
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty obo:OBI_0000312 ;
+                                                                    owl:someValuesFrom obo:APOLLO_SV_00000033
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
                        rdfs:subClassOf obo:IAO_0000109 ;
                        obo:IAO_0000115 "A measurement datum that is the output of counting."@en ;
                        obo:IAO_0000117 "Mathias Brochhausen" ;
                        obo:IAO_0000600 "A measurement datum that is the output of counting."@en ;
                        rdfs:label "count"@en .
+
+
+###  http://purl.obolibrary.org/obo/APOLLO_SV_00000033
+obo:APOLLO_SV_00000033 rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( obo:COB_0000035
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty obo:OBI_0000299 ;
+                                                                    owl:someValuesFrom obo:APOLLO_SV_00000032
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf obo:COB_0000035 ;
+                       obo:IAO_0000115 "The planned process of finding the number of elements in a finite set of objects."@en ;
+                       obo:IAO_0000117 "Mathias Brochhausen" ;
+                       obo:IAO_0000119 "http://en.wikipedia.org/wiki/Counting" ;
+                       obo:IAO_0000600 "The planned process of finding the number of elements in a finite set of objects."@en ;
+                       rdfs:label "counting"@en .
+
+
+###  http://purl.obolibrary.org/obo/APOLLO_SV_00000522
+obo:APOLLO_SV_00000522 rdf:type owl:Class ;
+                       rdfs:subClassOf obo:IAO_0000310 ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty obo:BFO_0000051 ;
+                                         owl:someValuesFrom obo:IAO_0000096
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty obo:BFO_0000051 ;
+                                         owl:someValuesFrom [ owl:intersectionOf ( obo:IAO_0000027
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty obo:IAO_0000136 ;
+                                                                                     owl:someValuesFrom obo:IAO_0000096
+                                                                                   ]
+                                                                                 ) ;
+                                                              rdf:type owl:Class
+                                                            ]
+                                       ] ;
+                       obo:IAO_0000111 "software source code version control repository"@en ;
+                       obo:IAO_0000115 "A document that comprises at least one source code module and provenance data about who contributed the set of files making up the module(s), and optionally comprises also multiple versions of files with detailed change history about who committed files and when, a license for the software, readme files, documentation, executables, etc."@en ;
+                       obo:IAO_0000117 "William R. Hogan"@en ;
+                       rdfs:comment "Refers to the stuff that lives on GitHub, not to GitHub or the git software on which it is based"@en ;
+                       rdfs:label "source code repository"@en .
+
+
+###  http://purl.obolibrary.org/obo/APOLLO_SV_00000524
+obo:APOLLO_SV_00000524 rdf:type owl:Class ;
+                       rdfs:subClassOf obo:COB_0000035 ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty obo:OBI_0000293 ;
+                                                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                     owl:unionOf ( obo:IAO_0000010
+                                                                                                   obo:IAO_0000096
+                                                                                                 )
+                                                                                   ]
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty obo:OBI_0000299 ;
+                                                                owl:someValuesFrom obo:IAO_0000010
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ;
+                       obo:IAO_0000111 "process of compiling software"@en ;
+                       obo:IAO_0000115 "A planned process that converts human-written or curated software into a machine-executable or interpretable set of instructions."@en ;
+                       obo:IAO_0000117 "William R. Hogan"@en ;
+                       rdfs:comment "It's compiling \"software\" (scare quotes) and not \"source code\" because you can compile Java bytecode to machine code, and Java bytecode is not technically \"source code\".  Compiling source code would be a subclass of this class (as would compiling Java bytecode, etc.)."@en ,
+                                    "Source code can be automatically generated to some extent, but we're assuming humans still curate it minimally. Also, in the case of Java and its JVM, it's machine interpretable instructions, not directly executable. Ditto for other languages with intermediate form like Java byte code."@en ;
+                       rdfs:label "compiling software"@en .
+
+
+###  http://purl.obolibrary.org/obo/APOLLO_SV_00000796
+obo:APOLLO_SV_00000796 rdf:type owl:Class ;
+                       owl:equivalentClass [ owl:intersectionOf ( obo:COB_0000035
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty obo:OBI_0000299 ;
+                                                                    owl:someValuesFrom obo:IAO_0000100
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ;
+                       rdfs:subClassOf obo:COB_0000035 ;
+                       obo:IAO_0000111 "creating a data set"@en ;
+                       obo:IAO_0000115 "A planned process that has a data set as its specified output."@en ;
+                       obo:IAO_0000117 "William R. Hogan"@en ;
+                       obo:IAO_0000118 "data set creation"@en ,
+                                       "dataset creation"@en ;
+                       rdfs:label "dataset creating"@en .
 
 
 ###  http://purl.obolibrary.org/obo/BFO_0000001
@@ -1091,6 +1205,10 @@ obo:BFO_0000028 rdf:type owl:Class .
 ###  http://purl.obolibrary.org/obo/BFO_0000040
 obo:BFO_0000040 rdf:type owl:Class ;
                 <http://www.w3.org/2004/02/skos/core#definition> "An independent continuant that is constituted by matter." .
+
+
+###  http://purl.obolibrary.org/obo/COB_0000035
+obo:COB_0000035 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000001
@@ -1196,6 +1314,28 @@ interpreted by or directly executed by a processing unit."""@en ;
                                 "PERSON: Melanie Courtot"@en ;
                 obo:IAO_0000119 "GROUP: OBI"@en ;
                 rdfs:label "software"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000013
+obo:IAO_0000013 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000088 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000312 ;
+                                  owl:someValuesFrom obo:IAO_0000444
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000312 ;
+                                  owl:allValuesFrom obo:IAO_0000444
+                                ] ;
+                obo:IAO_0000111 "journal article"@en ;
+                obo:IAO_0000112 "Examples are articles published in the journals, Nature and Science. The content can often be cited by reference to a paper based encoding, e.g.  Authors, Title of article, Journal name, date or year of publication, volume and page number."@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A report that is published in a journal."@en ;
+                obo:IAO_0000117 "PERSON: Alan Ruttenberg"@en ,
+                                "PERSON: Chris Stoeckert"@en ;
+                obo:IAO_0000119 "OBI_0000159"@en ,
+                                "group:OBI"@en ;
+                rdfs:label "journal article"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000015
@@ -1376,6 +1516,34 @@ obo:IAO_0000034 rdf:type owl:Class ;
                 rdfs:label "time trigger"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000037
+obo:IAO_0000037 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "dot plot"@en ;
+                obo:IAO_0000112 "Dot plot of SSC-H and FSC-H."@en ;
+                obo:IAO_0000114 obo:IAO_0000002 ;
+                obo:IAO_0000115 "A dot plot is a report graph which is a graphical representation of data where each data point is represented by a single dot placed on coordinates corresponding to data point values in particular dimensions."@en ;
+                obo:IAO_0000117 "person:Allyson Lister"@en ,
+                                "person:Chris Stoeckert"@en ;
+                obo:IAO_0000119 "OBI_0000123"@en ,
+                                "group:OBI"@en ;
+                rdfs:label "dot plot"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000038
+obo:IAO_0000038 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000309 ;
+                obo:IAO_0000111 "graph"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A diagram that presents one or more tuples of information by mapping those tuples in to a two dimensional space in a non arbitrary way."@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ,
+                                "person:Alan Ruttenberg"@en ,
+                                "person:Allyson Lister"@en ;
+                obo:IAO_0000119 "OBI_0000240"@en ,
+                                "group:OBI"@en ;
+                rdfs:label "graph"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000055
 obo:IAO_0000055 rdf:type owl:Class ;
                 rdfs:subClassOf obo:IAO_0000001 ;
@@ -1388,6 +1556,20 @@ obo:IAO_0000055 rdf:type owl:Class ;
                 obo:IAO_0000119 "OBI_0500021"@en ,
                                 "PRS"@en ;
                 rdfs:label "rule"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000057
+obo:IAO_0000057 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "contour plot"@en ;
+                obo:IAO_0000112 "Contour plot of SSC-H, FSC-H, and FL1-H."@en ;
+                obo:IAO_0000114 obo:IAO_0000002 ;
+                obo:IAO_0000116 "generically_dependent_continuants"@en ;
+                obo:IAO_0000117 "person:Allyson Lister"@en ,
+                                "person:Chris Stoeckert"@en ;
+                obo:IAO_0000119 "OBI_0000246"@en ,
+                                "group:Flow Cytometry community"@en ;
+                rdfs:label "contour plot"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000064
@@ -1417,6 +1599,45 @@ obo:IAO_0000065 rdf:type owl:Class ;
                 obo:IAO_0000119 "OBI_0000199"@en ,
                                 "group:OBI"@en ;
                 rdfs:label "software interpreter"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000079
+obo:IAO_0000079 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "density plot"@en ;
+                obo:IAO_0000112 "Density plot of SSC-H and FSC-H."@en ;
+                obo:IAO_0000114 obo:IAO_0000002 ;
+                obo:IAO_0000115 "A density plot is a report graph which is a graphical representation of data where the tint of a particular pixel corresponds to some kind of function corresponding the the amount of data points relativelly with their distance from the the pixel."@en ;
+                obo:IAO_0000117 "person:Allyson Lister"@en ,
+                                "person:Chris Stoeckert"@en ;
+                obo:IAO_0000119 "OBI_0000179"@en ,
+                                "group:Flow Cytometry community"@en ;
+                rdfs:label "density plot"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000088
+obo:IAO_0000088 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000310 ;
+                obo:IAO_0000111 "report"@en ;
+                obo:IAO_0000112 "Examples of reports are gene lists and investigation reports. These are not published (journal) articles but may be included in a journal article."@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A document assembled by an author for the purpose of providing information for the audience. A report is the output of a documenting process and has the objective to be consumed by a specific audience. Topic of the report is on something that has completed. A report is not a single figure. Examples of reports are journal article, patent application, grant progress report, case report (not patient record)."@en ;
+                obo:IAO_0000116 """2009-03-16: comment from Darren Natale: I am slightly uneasy with the sentence \"Topic of the report is on 
+something that has completed.\"  Should it be restricted to those things 
+that are completed?  For example, a progress report is (usually) about 
+something that definitely has *not* been completed, or may include 
+(only) projections.  I think the definition would not suffer if the 
+whole sentence is deleted."""@en ,
+                                "2009-03-16: this was report of results with definition: A report is a narrative object that is a formal statement of the results of an investigation, or of any matter on which definite information is required, made by some person or body instructed or required to do so."@en ,
+                                "2009-03-16: work has been done on this term during during the OBI workshop winter 2009 and the current definition was considered acceptable for use in OBI. If there is a need to modify this definition please notify OBI."@en ,
+                                "2009-08-10 Alan Ruttenberg: Larry Hunter suggests that this be obsoleted and replaced by 'document'. Alan restored as there are OBI dependencies and this merits further discussion"@en ,
+                                "disagreement about where reports go. alan: only some gene lists are reports. Is a report all the content of some document? The example of usage suggests that a report may be part of  some article. Term needs clarification"@en ;
+                obo:IAO_0000117 "PERSON: Alan Ruttenberg"@en ,
+                                "PERSON: Chris Stoeckert"@en ,
+                                "PERSON: Melanie Courtot"@en ;
+                obo:IAO_0000119 "GROUP: OBI"@en ,
+                                "OBI_0000099"@en ;
+                rdfs:label "report"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000096
@@ -1465,6 +1686,20 @@ obo:IAO_0000100 rdf:type owl:Class ;
                 obo:IAO_0000118 "data set"@en ;
                 obo:IAO_0000119 "group:OBI"@en ;
                 rdfs:label "homogenous data collection"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000101
+obo:IAO_0000101 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000308 ;
+                obo:IAO_0000111 "image"@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 "An image is an affine projection to a two dimensional surface, of measurements of some quality of an entity or entities repeated at regular intervals across a spatial range, where the measurements are represented as color and luminosity on the projected on surface."@en ;
+                obo:IAO_0000117 "person:Alan Ruttenberg"@en ,
+                                "person:Allyson"@en ,
+                                "person:Chris Stoeckert"@en ;
+                obo:IAO_0000119 "OBI_0000030"@en ,
+                                "group:OBI"@en ;
+                rdfs:label "image"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000104
@@ -1563,6 +1798,19 @@ Cons sometimes specifies a quality which is not a realizable."""@en ,
                 rdfs:label "setting datum"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000144
+obo:IAO_0000144 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "conclusion textual entity"@en ;
+                obo:IAO_0000112 "that fucoidan has a small statistically significant effect on AT3 level but no useful clinical effect as in-vivo anticoagulant, a paraphrase of part of the last paragraph of the discussion section of the paper 'Pilot clinical study to evaluate the anticoagulant activity of fucoidan', by Lowenthal et. al.PMID:19696660"@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A textual entity that expresses the results of reasoning about a problem, for instance as typically found towards the end of scientific papers."@en ;
+                obo:IAO_0000116 "2009/09/28 Alan Ruttenberg. Fucoidan-use-case"@en ,
+                                "2009/10/23 Alan Ruttenberg: We need to work on the definition still"@en ;
+                obo:IAO_0000117 "Person:Alan Ruttenberg"@en ;
+                rdfs:label "conclusion textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000178
 obo:IAO_0000178 rdf:type owl:Class ;
                 owl:equivalentClass [ owl:intersectionOf ( obo:BFO_0000040
@@ -1586,8 +1834,106 @@ obo:IAO_0000178 rdf:type owl:Class ;
                 rdfs:label "material information bearer"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000179
+obo:IAO_0000179 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "histogram"@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 """A histogram is a report graph which is a statistical description of a
+distribution in terms of occurrence frequencies of different event classes."""@en ;
+                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
+                                "PERSON:James Malone"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000119 "GROUP:OBI"@en ;
+                rdfs:label "histogram"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000180
+obo:IAO_0000180 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "heatmap"@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 """A heatmap is a report graph which is a graphical representation of data
+where the values taken by a variable(s) are shown as colors in a
+two-dimensional map."""@en ;
+                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
+                                "PERSON:James Malone"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000119 "GROUP:OBI"@en ;
+                rdfs:label "heatmap"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000181
+obo:IAO_0000181 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "Venn diagram"@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 """A Venn diagram is a report graph showing all hypothetically possible
+logical relations between a finite collection of sets."""@en ;
+                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
+                                "PERSON:James Malone"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/Venn_diagram"@en ;
+                rdfs:label "Venn diagram"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000183
+obo:IAO_0000183 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "dendrogram"@en ;
+                obo:IAO_0000112 """Dendrograms are often used in computational biology to
+illustrate the clustering of genes."""@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 """A dendrogram is a report graph which is a tree diagram
+frequently used to illustrate the arrangement of the clusters produced by a
+clustering algorithm."""@en ;
+                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
+                                "PERSON:James Malone"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/Dendrogram"@en ;
+                rdfs:label "dendrogram"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000184
+obo:IAO_0000184 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "scatter plot"@en ;
+                obo:IAO_0000112 "Comparison of gene expression values in two samples can be displayed in a scatter plot"@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 "A scatterplot is a graph which uses Cartesian coordinates to display values for two variables for a set of data. The data is displayed as a collection of points, each having the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis."@en ;
+                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
+                                "PERSON:James Malone"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000118 "scattergraph"@en ;
+                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/Scatterplot"@en ;
+                rdfs:label "scatter plot"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000185
+obo:IAO_0000185 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000101 ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 "A photograph is created by projecting an image onto a photosensitive surface such as a chemically treated plate or film, CCD receptor, etc."@en ;
+                obo:IAO_0000117 "PERSON:Alan Ruttenberg"@en ,
+                                "PERSON:Joanne Luciano"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000119 "WEB: http://en.wiktionary.org/wiki/photograph"@en ;
+                rdfs:label "photograph"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000186
 obo:IAO_0000186 rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( obo:BFO_0000040
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:RO_0000053 ;
+                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty obo:RO_0000059 ;
+                                                                                  owl:someValuesFrom obo:IAO_0000185
+                                                                                ]
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
                 obo:IAO_0000111 "photographic print"@en ;
                 obo:IAO_0000114 obo:IAO_0000125 ;
                 obo:IAO_0000115 "A photographic print is a material entity upon which a photograph generically depends."@en ;
@@ -1596,9 +1942,201 @@ obo:IAO_0000186 rdf:type owl:Class ;
                 rdfs:label "photographic print"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000300
+obo:IAO_0000300 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000030 ;
+                obo:IAO_0000111 "textual entity"@en ;
+                obo:IAO_0000112 "Words, sentences, paragraphs, and the written (non-figure) parts of publications are all textual entities"@en ;
+                obo:IAO_0000114 obo:IAO_0000123 ;
+                obo:IAO_0000115 "A textual entity is a part of a manifestation (FRBR sense), a generically dependent continuant whose concretizations are patterns of glyphs intended to be interpreted as words, formulas, etc."@en ;
+                obo:IAO_0000116 "AR, (IAO call 2009-09-01): a document as a whole is not typically a textual entity, because it has pictures in it - rather there are parts of it that are textual entities. Examples: The title, paragraph 2 sentence 7, etc."@en ,
+                                "MC, 2009-09-14 (following IAO call 2009-09-01): textual entities live at the FRBR (http://en.wikipedia.org/wiki/Functional_Requirements_for_Bibliographic_Records) manifestation level. Everything is significant: line break, pdf and html versions of same document are different textual entities."@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                obo:IAO_0000118 "text"@en ;
+                rdfs:label "textual entity"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000301
+obo:IAO_0000301 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:IAO_0000310
+                                ] ;
+                obo:IAO_0000111 "citation"@en ;
+                obo:IAO_0000112 "Verspoor, K., Cohen, KB., Hunter, L. Textual characteristics of traditional and Open Access scientific journals are similar, BMC Bioinformatics 2009, 10:183."@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity intended to identify a particular publication."@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "citation"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000302
+obo:IAO_0000302 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000590 ;
+                obo:IAO_0000111 "author identification"@en ;
+                obo:IAO_0000112 "L. Hunter"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity intended to identify a particular author"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "author identification"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000303
+obo:IAO_0000303 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "institutional identification"@en ;
+                obo:IAO_0000112 "University of Colorado Denver School of Medicine"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity intended to identify a particular institution"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "institutional identification"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000304
+obo:IAO_0000304 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:IAO_0000308
+                                ] ;
+                obo:IAO_0000111 "caption"@en ;
+                obo:IAO_0000112 "Figure 1: A system diagram describing the modules of the Hanalyzer.  Reading methods (green) take external sources of knowledge (blue) and extract information from them, either by parsing structured data or biomedical language processing to extract information from unstructured data.  Reading modules are responsible for tracking the provenance of all knowledge.  Reasoning methods (yellow) enrich the knowledge that results from reading by, for example, noting two genes that are annotated to the same ontology term or database entry.  All knowledge sources, read or reasoned, are assigned a reliability score, and all are combined using that score into a knowledge network (orange) that represents the integration of all sorts of relationship between a pair of genes and a combined reliability score.  A data network (also orange) is created from experimental results to be analyzed.  The reporting modules (pink) integrate the data and knowledge networks, producing visualizations that can be queried with the associated drill-down tool."@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity that describes a figure"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "caption"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000305
+obo:IAO_0000305 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "document title"@en ;
+                obo:IAO_0000112 "Textual characteristics of traditional and Open Access scientific journals are similar"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity that names a document"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "document title"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000306
+obo:IAO_0000306 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "table"@en ;
+                obo:IAO_0000112 """| T     F
+--+-----
+T   | T     F
+F   |  F    F"""@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity that contains a two-dimensional arrangement of texts repeated at regular intervals across a spatial range, such that the spatial relationships among the constituent texts expresses propositions"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "table"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000307
+obo:IAO_0000307 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000306 ;
+                obo:IAO_0000111 "table of abbreviations"@en ;
+                obo:IAO_0000112 """IAO  information artifact ontology
+OBI  ontology of biomedical investiations
+GO   gene ontology"""@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A table where the constituent texts are abbreviations and their expansions"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "table of abbreviations"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000308
+obo:IAO_0000308 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000030 ;
+                obo:IAO_0000111 "figure"@en ;
+                obo:IAO_0000112 "Any picture, diagram or table"@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "An information content entity consisting of a two dimensional arrangement of information content entities such that the arrangement itself is about something."@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "figure"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000309
+obo:IAO_0000309 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000308 ;
+                obo:IAO_0000111 "diagram"@en ;
+                obo:IAO_0000112 "A molecular structure ribbon cartoon showing helices, turns and sheets and their relations to each other in space."@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A figure that expresses one or more propositions"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "diagram"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000310
+obo:IAO_0000310 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000030 ;
+                obo:IAO_0000111 "document"@en ;
+                obo:IAO_0000112 "A journal article, patent application, laboratory notebook, or a book"@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A collection of information content entities intended to be understood together as a whole"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "document"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000311
+obo:IAO_0000311 rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( obo:IAO_0000310
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:OBI_0000312 ;
+                                                             owl:allValuesFrom obo:IAO_0000444
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf obo:IAO_0000310 ;
+                obo:IAO_0000111 "publication"@en ;
+                obo:IAO_0000112 "journal article, newspaper story, book, etc."@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A document that is the output of a publishing process."@en ;
+                obo:IAO_0000117 "PERSON: Chris Stoeckert"@en ,
+                                "PERSON: Jie Zheng"@en ,
+                                "PERSON: Lawrence Hunter"@en ;
+                obo:IAO_0000118 "published document"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/232> ;
+                rdfs:comment "Revisit the term in Octorber 2020. Improve the defintion."@en ;
+                rdfs:label "publication"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000312
+obo:IAO_0000312 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000311 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:OBI_0000066
+                                ] ;
+                obo:IAO_0000111 "publication about an investigation"@en ;
+                obo:IAO_0000112 "Most scientific journal articles"@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A publication that is about an investigation"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                obo:IAO_0000118 "scientific publication"@en ;
+                rdfs:label "publication about an investigation"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000313
+obo:IAO_0000313 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000310 ;
+                obo:IAO_0000111 "patent"@en ;
+                obo:IAO_0000112 "US Patent 6,449,603"@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A document that has been accepted by a patent authority"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "patent"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000314
 obo:IAO_0000314 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000030 ;
+                rdfs:subClassOf obo:IAO_0000030 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000050 ;
+                                  owl:someValuesFrom obo:IAO_0000310
+                                ] ;
                 obo:IAO_0000111 "document part"@en ;
                 obo:IAO_0000112 "An abstract, introduction, method or results section."@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1609,7 +2147,11 @@ obo:IAO_0000314 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000315
 obo:IAO_0000315 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:IAO_0000310
+                                ] ;
                 obo:IAO_0000111 "abstract"@en ;
                 obo:IAO_0000112 "The profusion of high-throughput instruments and the explosion of new results in the scientific literature, particularly in molecular biomedicine, is both a blessing and a curse to the bench researcher.   Even knowledgeable and experienced scientists can benefit from computational tools that help navigate this vast and rapidly evolving terrain. In this paper, we describe a novel computational approach to this challenge, a knowledge-based system that combines reading, reasoning and reporting methods to facilitate analysis of experimental data. Reading methods extract information from external resources, either by parsing structured data or biomedical language processing to extract information from unstructured data, and track knowledge provenance.  Reasoning methods enrich the knowledge that results from reading by, for example, noting two genes that are annotated to the same ontology term or database entry.  Reasoning is also used to combine all sources into a knowledge network that represents the integration of all sorts of relationships between a pair of genes, and to calculate a combined reliability score. Reporting methods combine the knowledge network with a congruent network constructed from experimental data and visualize the combined network in a tool that facilitates the knowledge-based analysis of that data."@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1641,7 +2183,11 @@ obo:IAO_0000316 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000317
 obo:IAO_0000317 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:OBI_0500000
+                                ] ;
                 obo:IAO_0000111 "methods section"@en ;
                 obo:IAO_0000112 "The section labelled 'Methods' or 'Materials and Methods' in a typical scientific journal article."@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1660,7 +2206,11 @@ obo:IAO_0000317 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000318
 obo:IAO_0000318 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:OBI_0000471
+                                ] ;
                 obo:IAO_0000111 "results section"@en ;
                 obo:IAO_0000112 "The section labelled 'results' in a typical scientific journal article"@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1686,7 +2236,11 @@ obo:IAO_0000319 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000320
 obo:IAO_0000320 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000301
+                                ] ;
                 obo:IAO_0000111 "references section"@en ;
                 obo:IAO_0000112 "The list of citations found at the end of a scientific publication, grant proposal or patent application, sometimes called \"literature cited\" or \"bibliography\""@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1702,7 +2256,11 @@ obo:IAO_0000320 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000321
 obo:IAO_0000321 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000302
+                                ] ;
                 obo:IAO_0000111 "author list"@en ;
                 obo:IAO_0000112 "Lawrence Hunter and Kevin Brettonel Cohen"@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1713,7 +2271,11 @@ obo:IAO_0000321 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000322
 obo:IAO_0000322 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000303
+                                ] ;
                 obo:IAO_0000111 "institution list"@en ;
                 obo:IAO_0000112 "The University of Colorado Denver School of Medicine and the University of Colorado Boulder."@en ;
                 obo:IAO_0000114 obo:IAO_0000120 ;
@@ -1798,6 +2360,36 @@ obo:IAO_0000326 rdf:type owl:Class ;
                                 "supporting information"@en ;
                 obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/234> ;
                 rdfs:label "supplementary material to a document"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000327
+obo:IAO_0000327 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000306 ;
+                obo:IAO_0000111 "table of contents"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A table that relates document parts to specific locations in a document (usually page numbers).  This is also a document part (subsumption there should be inferred)."@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "table of contents"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000328
+obo:IAO_0000328 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000306 ;
+                obo:IAO_0000111 "table of figures"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A table that relates figures in a document to specific locations in that document (usually page numbers).  This is also a document part (subsumption there should be inferred)."@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "table of figures"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000329
+obo:IAO_0000329 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000305 ;
+                obo:IAO_0000111 "running title"@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A shorter version of a document title"@en ;
+                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ;
+                rdfs:label "running title"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000330
@@ -1917,7 +2509,15 @@ obo:IAO_0000403 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000408
 obo:IAO_0000408 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000032 ;
+                rdfs:subClassOf obo:IAO_0000032 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000039 ;
+                                  owl:someValuesFrom obo:UO_0000001
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000221 ;
+                                  owl:someValuesFrom obo:PATO_0000122
+                                ] ;
                 obo:IAO_0000114 obo:IAO_0000123 ;
                 obo:IAO_0000115 "A scalar measurement datum that is the result of measurement of length quality"@en ;
                 obo:IAO_0000117 "Alan Ruttenberg"@en ;
@@ -1926,7 +2526,18 @@ obo:IAO_0000408 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000414
 obo:IAO_0000414 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000032 ;
+                rdfs:subClassOf obo:IAO_0000032 ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty obo:IAO_0000039 ;
+                                                         owl:allValuesFrom obo:UO_0000002
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty obo:IAO_0000221 ;
+                                                         owl:allValuesFrom obo:PATO_0000125
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
                 obo:IAO_0000114 obo:IAO_0000123 ;
                 obo:IAO_0000115 "A scalar measurement datum that is the result of measurement of mass quality"@en ;
                 obo:IAO_0000116 "2009/09/28 Alan Ruttenberg. Fucoidan-use-case"@en ;
@@ -1934,14 +2545,46 @@ obo:IAO_0000414 rdf:type owl:Class ;
                 rdfs:label "mass measurement datum"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000415
+obo:IAO_0000415 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "hypothesis textual entity"@en ;
+                obo:IAO_0000112 "that fucoidan has a small statistically significant effect on AT3 level but no useful clinical effect as in-vivo anticoagulant, a paraphrase of part of the last paragraph of the discussion section of the paper 'Pilot clinical study to evaluate the anticoagulant activity of fucoidan', by Lowenthal et. al.PMID:19696660"@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A textual entity that expresses an assertion that is intended to be tested."@en ;
+                obo:IAO_0000116 "2009/09/28 Alan Ruttenberg. Fucoidan-use-case"@en ;
+                obo:IAO_0000117 "Person:Alan Ruttenberg"@en ;
+                rdfs:label "hypothesis textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000416
 obo:IAO_0000416 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000032 ;
+                rdfs:subClassOf obo:IAO_0000032 ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty obo:IAO_0000039 ;
+                                                         owl:allValuesFrom obo:UO_0000003
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty obo:IAO_0000413 ;
+                                                         owl:allValuesFrom obo:BFO_0000015
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
                 obo:IAO_0000114 obo:IAO_0000123 ;
                 obo:IAO_0000115 "A scalar measurement datum that is the result of measuring a temporal interval"@en ;
                 obo:IAO_0000116 "2009/09/28 Alan Ruttenberg. Fucoidan-use-case"@en ;
                 obo:IAO_0000117 "Person:Alan Ruttenberg"@en ;
                 rdfs:label "time measurement datum"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000422
+obo:IAO_0000422 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000114 obo:IAO_0000123 ;
+                obo:IAO_0000115 "A textual entity that is used as directive to deliver something to a person, or organization" ;
+                obo:IAO_0000116 "2010-05-24 Alan Ruttenberg. Use label for the string representation. See issue https://github.com/information-artifact-ontology/IAO/issues/59" ;
+                rdfs:label "postal address"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000429
@@ -1964,6 +2607,127 @@ obo:IAO_0000442 rdf:type owl:Class ;
                 obo:IAO_0000117 "PERSON: Alan Ruttenberg"@en ,
                                 "PERSON: Melanie Courtot"@en ;
                 rdfs:label "author role"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000443
+obo:IAO_0000443 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000293 ;
+                                  owl:someValuesFrom obo:IAO_0000013
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000299 ;
+                                  owl:someValuesFrom obo:IAO_0000027
+                                ] ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A planned process in which journal articles are read or processed and data items are extracted, typically for further analysis or indexing" ;
+                obo:IAO_0000117 "Person:Alan Ruttenberg" ;
+                rdfs:label "data item extraction from journal article" .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000444
+obo:IAO_0000444 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A planned process of making information, such as literature, music, and software etc., available to the public for sale or for free."@en ;
+                obo:IAO_0000117 "Person: Jie Zheng"@en ;
+                obo:IAO_0000119 "https://en.wikipedia.org/wiki/Publishing" ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/232> ;
+                obo:IAO_0000234 "VEuPathDB"@en ;
+                rdfs:label "publishing process"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000445
+obo:IAO_0000445 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000310 ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A document that is in preparation for submission to be published."@en ;
+                obo:IAO_0000117 "PERSON: Jie Zheng"@en ;
+                obo:IAO_0000119 "EFO_0001795 in preparation"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/232> ;
+                obo:IAO_0000234 "VEuPathDB"@en ;
+                rdfs:label "document in preparation for publication"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000572
+obo:IAO_0000572 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000293 ;
+                                  owl:someValuesFrom obo:IAO_0000030
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000299 ;
+                                  owl:someValuesFrom obo:IAO_0000310
+                                ] ;
+                obo:IAO_0000112 "Recording the current temperature in a laboratory notebook. Writing a journal article. Updating a patient record in a database."@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A planned process in which a document is created or added to by including the specified input in it."@en ;
+                obo:IAO_0000116 "6/11/9: Edited at OBI workshop. We need to be able identify a child form of information artifact which corresponds to something enduring (not brain like). This used to be restricted to physical document or digital entity as the output, but that excludes e.g. an audio cassette tape"@en ;
+                obo:IAO_0000117 "Bjoern Peters"@en ;
+                obo:IAO_0000119 "wikipedia http://en.wikipedia.org/wiki/Documenting"@en ;
+                rdfs:label "documenting"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000573
+obo:IAO_0000573 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000038 ;
+                obo:IAO_0000111 "line graph"@en ;
+                obo:IAO_0000114 obo:IAO_0000122 ;
+                obo:IAO_0000115 """A line graph is a type of graph created by connecting a series of data
+points together with a line."""@en ;
+                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
+                                "PERSON:Melanie Courtot"@en ;
+                obo:IAO_0000118 "line chart"@en ;
+                obo:IAO_0000119 "GROUP:OBI"@en ,
+                                "WEB: http://en.wikipedia.org/wiki/Line_chart"@en ;
+                rdfs:label "line graph"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000574
+obo:IAO_0000574 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000299 ;
+                                  owl:someValuesFrom obo:IAO_0000577
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:RO_0000057 ;
+                                  owl:someValuesFrom obo:IAO_0000579
+                                ] ;
+                obo:IAO_0000112 "A new pubmed ID being created for a journal article, and the associated pubmed record containing information to the journal article. A license plate number registered at the DMV to be belonging to a specific vehicle and owner. Placing a barcode on a product and entering information in a database that this barcode is assigned."@en ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A planned process in which a new CRID is created, associated with an entity, and stored in the CRID registry thereby registering it as being associated with some entity"@en ;
+                obo:IAO_0000116 "2014-05-05: It is the CRID registry that assigns CRIDs, not the users of the registry."@en ;
+                obo:IAO_0000117 "Person:Alan Ruttenberg"@en ,
+                                "Person:Bjoern Peters"@en ,
+                                "Person:Melanie Courtot"@en ;
+                obo:IAO_0000118 "assigning a CRID" ;
+                rdfs:label "assigning a centrally registered identifier"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000575
+obo:IAO_0000575 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000293 ;
+                                  owl:someValuesFrom obo:IAO_0000030
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000293 ;
+                                  owl:someValuesFrom obo:IAO_0000577
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:RO_0000057 ;
+                                  owl:someValuesFrom obo:IAO_0000579
+                                ] ;
+                obo:IAO_0000112 "Articles in Pubmed are reviewed by curators who add MESH terms to the Pubmed records in order to categorize them better and improve the ability to search for them. " ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A planned process in which a CRID registry associates an information content entity with a CRID symbol"@en ;
+                obo:IAO_0000117 "PERSON:Alan Ruttenberg"@en ;
+                obo:IAO_0000118 "associating information with a CRID in the CRID registry" ;
+                rdfs:label "associating information with a centrally registered identifier in its registry"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000577
@@ -2031,6 +2795,32 @@ obo:IAO_0000579 rdf:type owl:Class ;
                 rdfs:label "centrally registered identifier registry"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000580
+obo:IAO_0000580 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000293 ;
+                                  owl:someValuesFrom obo:IAO_0000577
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000299 ;
+                                  owl:someValuesFrom obo:IAO_0000030
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:RO_0000057 ;
+                                  owl:someValuesFrom obo:IAO_0000579
+                                ] ;
+                obo:IAO_0000112 "Going to the PubMed website and entering a PubMed ID in order to retrieve the Pubmed information associated with that ID. " ;
+                obo:IAO_0000114 obo:IAO_0000120 ;
+                obo:IAO_0000115 "A planned process in which a request to a CRID registry is made to return the information associated with a CRID symbol"@en ;
+                obo:IAO_0000117 "PERSON: Alan Ruttenberg"@en ,
+                                "PERSON: Bill Hogan"@en ,
+                                "PERSON: Bjoern Peters"@en ,
+                                "PERSON: Melanie Courtot"@en ;
+                obo:IAO_0000118 "looking up a CRID" ;
+                rdfs:label "looking up a centrally registered identifier"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000582
 obo:IAO_0000582 rdf:type owl:Class ;
                 rdfs:subClassOf obo:IAO_0000109 ,
@@ -2062,6 +2852,21 @@ obo:IAO_0000584 rdf:type owl:Class ;
                 obo:IAO_0000117 "Alan Ruttenberg"@en ;
                 obo:IAO_0000118 "experimental time series"@en ;
                 rdfs:label "time sampled measurement data set"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000590
+obo:IAO_0000590 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "written name"@en ;
+                obo:IAO_0000112 "\"Bill Clinton\""@en ,
+                                "\"The Eiffel Tower\""@en ,
+                                "\"United States of America\""@en ;
+                obo:IAO_0000114 obo:IAO_0000125 ;
+                obo:IAO_0000115 "A textual entity that denotes a particular in reality."@en ;
+                obo:IAO_0000117 "PERSON: Bill Hogan"@en ;
+                obo:IAO_0000119 "https://github.com/information-artifact-ontology/IAO/issues/114"@en ;
+                obo:IAO_0000232 "The qualifier \"written\" is to set it apart from spoken names.  Also, note the restrictions to particulars.  We are not naming universals.   We could however, be naming, attributive collections which are particulars, so \"All people located in the boundaries of the city of Little Rock, AR on June 18, 2011 at 9:50a CDT\" would be a name."@en ;
+                rdfs:label "written name"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000591
@@ -2119,9 +2924,26 @@ obo:IAO_0000595 rdf:type owl:Class ;
                 rdfs:label "software script"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000605
+obo:IAO_0000605 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "abbreviation textual entity"@en ;
+                obo:IAO_0000112 """From Shiba et al. Acta Neuropathol Commun. 2013; 1: 45. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3893467/):
+
+BAC: Bacterial artificial chromosome; CR: Calretinin; GFAP: Glial fibrillary acidic protein; MAP: Microtubule-associated protein; MRI: Magnetic resonance imaging; NSC: Neural stem cell; PDA: Patent ductus arteriosus; PMG: Polymicrogyria; PNH: Periventricular nodular heterotopia; VSD: Ventricular septal defect."""@en ;
+                obo:IAO_0000115 "A textual entity listing abbreviations and their expansions that are used in a document."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "abbreviation textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000606
 obo:IAO_0000606 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000605
+                                ] ;
                 obo:IAO_0000111 "abbreviations section"@en ;
                 obo:IAO_0000112 "The section labelled 'abbreviations' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document where abbreviations and their long-forms used within the document are listed."@en ;
@@ -2145,7 +2967,11 @@ obo:IAO_0000606 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000607
 obo:IAO_0000607 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000608
+                                ] ;
                 obo:IAO_0000111 "author information section"@en ;
                 obo:IAO_0000112 "The section labelled 'author information' in a typical scientific journal article, e.g. in Takon. Ann Gen Psychiatry. 2011; 10: 25. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3204268/)"@en ;
                 obo:IAO_0000115 "A part of a document about the authors that provides biographical information and may discuss how the authors' professional experiences are relevant to the work described in the document."@en ;
@@ -2159,9 +2985,26 @@ obo:IAO_0000607 rdf:type owl:Class ;
                 rdfs:label "author information section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000608
+obo:IAO_0000608 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "author information textual entity"@en ;
+                obo:IAO_0000112 """From Takon. Ann Gen Psychiatry. 2011; 10: 25. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3204268/):
+
+IT [the author] is the lead paediatrician for ADHD services in East Hertfordshire, UK, where she runs a weekly joint ADHD clinic with the Child and Adolescent psychiatrist and works within an ADHD specialist team. IT also sees children with other neurodisability issues who may have comorbid ADHD, where the presentation may be more complex and challenging to manage. IT has vast experience in managing children with complex ADHD. She has 18 years of experience in paediatrics and also has extensive experience in the use of psychopharmacologic agents in managing children with ADHD."""@en ;
+                obo:IAO_0000115 "A textual entity expression information about an author of a document. This information may include biographical information and may discuss how the authors' professional experiences are relevant to the work described in the document."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "author information textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000609
 obo:IAO_0000609 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000610
+                                ] ;
                 obo:IAO_0000111 "author summary section"@en ;
                 obo:IAO_0000112 "The section labelled 'synopsis' in a typical scientific journal article, e.g. in Pendse et al. BMC Genomics. 2013; 14: 136. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3608171/)"@en ;
                 obo:IAO_0000115 "A part of a document, distinct from the abstract, that describes the significance and broader context of the document content. The author summary is often written in a non-technical manner and is aimed at both scientists and non-scientist readers."@en ;
@@ -2174,9 +3017,28 @@ obo:IAO_0000609 rdf:type owl:Class ;
                 rdfs:label "author summary section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000610
+obo:IAO_0000610 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "author summary textual entity"@en ;
+                obo:IAO_0000112 """From Pendse et al. BMC Genomics. 2013; 14: 136. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3608171/):
+
+
+The search for genetic risk factors for common human diseases often relies on the use of linkage and association studies to establish correlation between genomic markers and disease risk. These studies require additional functional evaluation of candidate genes, including their possible interaction with diet and environment. The number of candidate genes is typically large and the development of appropriate genetic tools in mammalian systems is slow. By contrast, large-scale genetic screens, using widely available genetic tools, are routinely conducted in the fruit fly Drosophila melanogaster. In this study, we used Drosophila to screen candidate genes identified in human genome-wide scans as associated with risk of metabolic abnormalities such as type 2 diabetes. We show that a number of human candidate genes have fly orthologs that play an important role in Drosophila tolerance to high dietary sucrose. We further explored some of the specific metabolic abnormalities that can result when these genes’ activities are reduced in flies, focusing on a gene we call dHHEX (CG7056), the fly ortholog of human HHEX."""@en ;
+                obo:IAO_0000115 "A textual entity, distinct from the abstract, that describes the significance and broader context of the document content. The author summary is often written in a non-technical manner and is aimed at both scientists and non-scientist readers, e.g as described in the article submission guidelines for PLoS Genetics (http://journals.plos.org/plosgenetics/s/submission-guidelines)."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000119 "Article submission guidelines for PLoS Genetics (http://journals.plos.org/plosgenetics/s/submission-guidelines)."@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "author summary textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000611
 obo:IAO_0000611 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000612
+                                ] ;
                 obo:IAO_0000111 "availability section"@en ;
                 obo:IAO_0000112 "The section labelled 'availability and requirements' in a typical scientific journal article, e.g. Qi et al. BMC Bioinformatics. 2014; 15: 11. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897912/)."@en ;
                 obo:IAO_0000115 "A part of a document about a resource described in the document, e.g. software, that describes where and/or how that resource can be obtained."@en ;
@@ -2192,9 +3054,26 @@ obo:IAO_0000611 rdf:type owl:Class ;
                 rdfs:label "availability section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000612
+obo:IAO_0000612 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "availability textual entity"@en ;
+                obo:IAO_0000112 """From Qi et al. BMC Bioinformatics. 2014; 15: 11. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897912/):
+
+Project home page:http://krux.googlecode.com"""@en ;
+                obo:IAO_0000115 "A textual entity expressing the location of a resource, e.g. software, or the manner in which a resource can be obtained."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "availability textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000613
 obo:IAO_0000613 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000614
+                                ] ;
                 obo:IAO_0000111 "case report section"@en ;
                 obo:IAO_0000112 "The section labelled 'case report' in a typical scientific journal article, e.g. in Taglia et al. Acta Myol. 2012 Dec; 31(3): 201–203. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3631801/)"@en ;
                 obo:IAO_0000115 "A part of a document about the medical history of a specific patient as it relates to the topic of the document."@en ;
@@ -2205,9 +3084,26 @@ obo:IAO_0000613 rdf:type owl:Class ;
                 rdfs:label "case report section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000614
+obo:IAO_0000614 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "case report textual entity"@en ;
+                obo:IAO_0000112 """Excerpt from Taglia et al. Acta Myol. 2012 Dec; 31(3): 201–203. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3631801/):
+
+The patient is a 50-year-old man. His medical history was not contributory. At the age of 37 years, he complained of persistent fatigue and dyspnoea even for modest efforts and oedema of lower limbs. The patient was examined at the department of internal medicine of the local hospital, and hospitalised with a diagnosis of dilated cardiomyopathy probably consequence of a myocarditis process. Soon after he was transferred to the cardiologic department of the regional hospital, and pharmacologically treated for heart failure and pulmonary hypertension."""@en ;
+                obo:IAO_0000115 "A textual entity that expresses a detailed account of a portion of the medical history for a specific patient."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "case report textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000615
 obo:IAO_0000615 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000144
+                                ] ;
                 obo:IAO_0000111 "conclusion section"@en ;
                 obo:IAO_0000112 "The section labelled 'conclusion' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document used to summarize the findings discussed in the document. The conclusion section is typically found near the end of a document."@en ;
@@ -2223,7 +3119,11 @@ obo:IAO_0000615 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000616
 obo:IAO_0000616 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000617
+                                ] ;
                 obo:IAO_0000111 "conflict of interest section"@en ;
                 obo:IAO_0000112 "The section labelled 'conflict of interest statement' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document used to declare any competing interests regarding the authors and/or funding organization for the work described in the document."@en ;
@@ -2248,9 +3148,24 @@ obo:IAO_0000616 rdf:type owl:Class ;
                 rdfs:label "conflict of interest section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000617
+obo:IAO_0000617 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "conflict of interest statement"@en ;
+                obo:IAO_0000112 "SD [an author] is a Merck employee and Merck is the sponsor of this study. [Taken from 'Effects of obstructive sleep apnoea risk on postoperative respiratory complications: protocol for a hospital-based registry study' Shin et al. 2016  (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4735131/)] "@en ;
+                obo:IAO_0000115 "A textual entity that expresses a situation involving one or more of the authors, or the funding source of a document whereby the authors or funding source stand to potentially gain (typically financially) from the results reported in the document."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "conflict of interest textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000618
 obo:IAO_0000618 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000619
+                                ] ;
                 obo:IAO_0000111 "consent section"@en ;
                 obo:IAO_0000112 "The section labelled 'consent' in a typical scientific journal article, e.g. Shiba et al. Acta Neuropathol Commun. 2013; 1: 45. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3893467/)"@en ;
                 obo:IAO_0000115 "A part of a document about the consent process that was used to enroll patients in a study."@en ;
@@ -2260,9 +3175,26 @@ obo:IAO_0000618 rdf:type owl:Class ;
                 rdfs:label "consent section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000619
+obo:IAO_0000619 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "consent textual entity"@en ;
+                obo:IAO_0000112 """From Shiba et al. Acta Neuropathol Commun. 2013; 1: 45. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3893467/):
+
+Written informed consent was obtained from the patient’s parents for publication of this Case report and any accompanying images. A copy of the written consent is available for review by the Editor-in chief of this journal."""@en ;
+                obo:IAO_0000115 "A textual entity that documents the consenting process used to enroll patients in a study."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "consent textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000620
 obo:IAO_0000620 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000621
+                                ] ;
                 obo:IAO_0000111 "ethical approval section"@en ;
                 obo:IAO_0000112 "The section labelled 'ethical approval' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document about the governance body responsible for approving the work discussed in a document on an ethical basis."@en ;
@@ -2276,9 +3208,30 @@ obo:IAO_0000620 rdf:type owl:Class ;
                 rdfs:label "ethical approval section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000621
+obo:IAO_0000621 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:OBI_0500000
+                                ] ;
+                obo:IAO_0000111 "ethical approval textual entity"@en ;
+                obo:IAO_0000112 """From McLean et al. Br J Gen Pract. 2014 Jul; 64(624): e440–e447 (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4073730/):
+
+The NHS National Research Ethics Service had previously approved the use of these anonymised data for research purposes and this analysis did not require independent review."""@en ;
+                obo:IAO_0000115 "A textual entity that documents the ethical approval of some study design."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "ethical approval textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000622
 obo:IAO_0000622 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000308
+                                ] ;
                 obo:IAO_0000111 "figures section"@en ;
                 obo:IAO_0000112 "The section labelled 'figures' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document that contains one or more figures."@en ;
@@ -2290,7 +3243,11 @@ obo:IAO_0000622 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000623
 obo:IAO_0000623 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000624
+                                ] ;
                 obo:IAO_0000111 "funding source declaration section"@en ;
                 obo:IAO_0000112 "The section labelled 'funding' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document used to detail information regarding the source of funding used in support of the generation of the document content."@en ;
@@ -2311,9 +3268,26 @@ obo:IAO_0000623 rdf:type owl:Class ;
                 rdfs:label "funding source declaration section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000624
+obo:IAO_0000624 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "funding souce declaration textual entity"@en ;
+                obo:IAO_0000112 """From Stephan et al. Accid Anal Prev. 2011 May; 43(3): 1062–1067. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3062852/):
+
+This study was supported by the International Collaborative Research Grants Scheme with joint grants from the Wellcome Trust UK (GR071587MA) and the Australian NHMRC (268055). The funding sources played no role in study design, data collection, analysis or interpretation, writing the report, or the decision to submit the paper for publication."""@en ;
+                obo:IAO_0000115 "A textual entity documenting the source of funding that supported some study."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "funding source declaration textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000625
 obo:IAO_0000625 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000626
+                                ] ;
                 obo:IAO_0000111 "future directions section"@en ;
                 obo:IAO_0000112 "The section labelled 'future directions' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document detailing extensions of the described work that may be implemented at some future point in time."@en ;
@@ -2336,9 +3310,26 @@ obo:IAO_0000625 rdf:type owl:Class ;
                 rdfs:label "future directions section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000626
+obo:IAO_0000626 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "future directions textual entity"@en ;
+                obo:IAO_0000112 """Excerpt from Wang and Li. Acta Pharmacol Sin. 2016 Jan; 37(1): 25–33. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4722976/):
+
+In the future, several questions will need to be resolved regarding the physiological assembly of KCNQ channels and their functional implications in complex neural circuits. First, we still lack sufficiently selective inhibitors and activators among the KCNQ family members."""@en ;
+                obo:IAO_0000115 "A textual entity expressing ideas regarding future work relevant to work described in a document that could be done."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "future directions textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000627
 obo:IAO_0000627 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000628
+                                ] ;
                 obo:IAO_0000111 "genome announcement section"@en ;
                 obo:IAO_0000112 "The section labelled 'genome announcement' in a typical scientific journal article, e.g. in Kim et al. J Bacteriol. 2011 Oct; 193(19): 5537. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3187466/)"@en ;
                 obo:IAO_0000115 "A document part announcing the publication of a novel draft genome sequence."@en ;
@@ -2348,9 +3339,39 @@ obo:IAO_0000627 rdf:type owl:Class ;
                 rdfs:label "genome announcement section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000628
+obo:IAO_0000628 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "genome announcement textual entity"@en ;
+                obo:IAO_0000112 """Excerpt from Kim et al. J Bacteriol. 2011 Oct; 193(19): 5537. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3187466/):
+
+Here we report the genome sequence of Lactobacillus malefermentans KCTC 3548, which we obtained using a whole-genome shotgun strategy (4) with Roche 454 GS (FLX Titanium) pyrosequencing (257,559 reads totaling ∼89.8 Mb; ∼45-fold coverage of the genome) at the Genome Resource Center, Korea Research Institute of Bioscience and Biotechnology (KRIBB)."""@en ;
+                obo:IAO_0000115 "A textual entity that describes the generation and public release of a novel, draft genome sequence."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "genome announcement textual entity"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000629
+obo:IAO_0000629 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "keyword textual entity"@en ;
+                obo:IAO_0000112 """From: Fu and Lin. Identification of gene-oriented exon orthology between human and mouse. BMC Genomics. 2012; 13(Suppl 1): S10. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3303729/):
+
+Exon orthology; alternative splicing; exon duplication; intron-exon structure."""@en ;
+                obo:IAO_0000115 "A textual entity listing keywords indicating the major theme(s) of a document."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "keyword textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000630
 obo:IAO_0000630 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000629
+                                ] ;
                 obo:IAO_0000111 "keywords section"@en ;
                 obo:IAO_0000112 "The section labelled 'keywords' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document where keywords selected by the author to categorize the major theme(s) of a document are listed."@en ;
@@ -2362,7 +3383,15 @@ obo:IAO_0000630 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000631
 obo:IAO_0000631 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000632
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:IAO_0000136 ;
+                                  owl:someValuesFrom obo:OBI_0500000
+                                ] ;
                 obo:IAO_0000111 "study limitations section"@en ;
                 obo:IAO_0000112 "The section labelled 'limitations' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document about biases or short comings related to the study design and execution."@en ;
@@ -2372,6 +3401,20 @@ obo:IAO_0000631 rdf:type owl:Class ;
                 obo:IAO_0000119 "Author guidelines published by The Society for Academic Emergency Medicine. (http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1553-2712/homepage/ForAuthors.html)"@en ;
                 obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
                 rdfs:label "study limitations section"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000632
+obo:IAO_0000632 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "study limitations textual entity"@en ;
+                obo:IAO_0000112 """Excerpt from the Limitations section of Fermann et al 2015, Acad Emerg Med. 2015 Mar; 22(3): 299–307 (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4405051/). 
+
+Owing to the nature of a post hoc study, any significant values must be interpreted with caution. In the current analysis, no multiple testing was conducted and p-values remain unadjusted. Moreover, a selection bias arising from the randomized open-label design of the original EINSTEIN PE study cannot be ruled out."""@en ;
+                obo:IAO_0000115 "A textual entity addressing a shortcoming or bias of a study design or execution."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000119 "Author guidelines published by The Society for Academic Emergency Medicine. (http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1553-2712/homepage/ForAuthors.html)"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "study limitations textual entity"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000633
@@ -2400,7 +3443,11 @@ obo:IAO_0000634 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000635
 obo:IAO_0000635 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000636
+                                ] ;
                 obo:IAO_0000111 "patients section"@en ;
                 obo:IAO_0000112 "The section labelled 'patients' in a typical scientific journal article, e.g. in Citak et al. Acta Orthop. 2013 Jun; 84(3): 326–327. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3715825/)"@en ;
                 obo:IAO_0000115 "A part of a document about the patients that participated in a study."@en ;
@@ -2409,9 +3456,26 @@ obo:IAO_0000635 rdf:type owl:Class ;
                 rdfs:label "patients section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000636
+obo:IAO_0000636 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "patients textual entity"@en ;
+                obo:IAO_0000112 """Excerpt from Citak et al. Acta Orthop. 2013 Jun; 84(3): 326–327. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3715825/):
+
+Between January 1996 and February 2012, we treated 4 patients with interprosthetic femoral fractures (3 of them women) (Figure 2) using a custom-made interposition device (Waldemar Link GmbH, Hamburg, Germany) (Figure 1). Mean age was 74 (59–86) years. The fractures occurred mean 18 (13–28) years after primary THA and mean 14 (10–17) years after primary TKA. At the latest follow-up, after mean 8 (0.5–16) years, revision surgery with a total femur replacement was required in 1 case due to aseptic loosening. No other complications requiring revision surgery occurred."""@en ;
+                obo:IAO_0000115 "A textual entity expressing information regarding the patients used in a study."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "patients textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000637
 obo:IAO_0000637 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000638
+                                ] ;
                 obo:IAO_0000111 "pre-publication history section"@en ;
                 obo:IAO_0000112 "The section labelled 'pre-publication history' in a typical scientific journal article, e.g. in Xiao et al. BMC Anesthesiol. 2013; 13: 33. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4016475/)"@en ;
                 obo:IAO_0000115 "A part of the document about the publication history of a document. This section typically details dates of document submission to a journal and dates of any re-submissions as well as reviewer comments and responses to reviewers by the authors."@en ;
@@ -2422,9 +3486,27 @@ obo:IAO_0000637 rdf:type owl:Class ;
                 rdfs:label "pre-publication history section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000638
+obo:IAO_0000638 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "pre-publication history textual entity"@en ;
+                obo:IAO_0000112 """From Xiao et al. BMC Anesthesiol. 2013; 13: 33. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4016475/):
+
+The pre-publication history for this paper can be accessed here:
+http://www.biomedcentral.com/1471-2253/13/33/prepub"""@en ;
+                obo:IAO_0000115 "A textual entity that expresses the pre-publication history (submission dates, reviewer comments, etc) for a document, often including a hyperlink to a web page detailing the information."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "pre-publication history textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000639
 obo:IAO_0000639 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000640
+                                ] ;
                 obo:IAO_0000111 "related work section"@en ;
                 obo:IAO_0000112 "The section labelled 'related work' in a typical scientific journal article, e.g. Žitnik and Zupan. Bioinformatics. 2015 Jun 15; 31(12): i230–i239. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4542780/)"@en ;
                 obo:IAO_0000115 "A part of a document about work in other publications that is relevant to the content of the document."@en ;
@@ -2435,9 +3517,28 @@ obo:IAO_0000639 rdf:type owl:Class ;
                 rdfs:label "related work section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000640
+obo:IAO_0000640 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "related work textual entity"@en ;
+                obo:IAO_0000112 """Excerpt from Žitnik and Zupan. Bioinformatics. 2015 Jun 15; 31(12): i230–i239. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4542780/):
+
+Our work presented here is similar in spirit to our recently developed methodology for data fusion via collective matrix factorization (Žitnik and Zupan, 2015).
+
+"""@en ;
+                obo:IAO_0000115 "A textual entity that discusses work from other publications and expresses their relevancy to the content of a document."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "related work textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000641
 obo:IAO_0000641 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000642
+                                ] ;
                 obo:IAO_0000111 "requirements section"@en ;
                 obo:IAO_0000112 "The section labelled 'availability and requirements' in a typical scientific journal article, e.g. Qi et al. BMC Bioinformatics. 2014; 15: 11. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897912/)."@en ;
                 obo:IAO_0000115 "A part of a document about a resource described in the document, e.g. software, that describes the requirements necessary to use the resource, e.g. operating systems, hardware, etc. in the case of a software resource."@en ;
@@ -2447,9 +3548,47 @@ obo:IAO_0000641 rdf:type owl:Class ;
                 rdfs:label "requirements section"@en .
 
 
+###  http://purl.obolibrary.org/obo/IAO_0000642
+obo:IAO_0000642 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "requirements textual entity"@en ;
+                obo:IAO_0000112 """From Qi et al. BMC Bioinformatics. 2014; 15: 11. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3897912/):
+
+• Operating systems: Platform independent
+
+• Programming language: Matlab, R, Python
+
+• Other requirements: None
+
+• License: GNU GPL v3
+
+• Any restrictions to use by non-academics: None"""@en ;
+                obo:IAO_0000115 "A textual entity that expresses the requirements necessary to use a resource, e.g. software."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "requirements textual entity"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000643
+obo:IAO_0000643 rdf:type owl:Class ;
+                rdfs:subClassOf obo:IAO_0000300 ;
+                obo:IAO_0000111 "statistical analysis textual entity"@en ;
+                obo:IAO_0000112 """From Mondo et al. Cardiovasc J Afr. 2013 Mar; 24(2): 28–33. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3734881/):
+
+Data were captured into EPI-DATA (version 3.1), cleaned and then exported to Stata version 10 for analysis. Continuous variables were summarised as mean (± standard deviation) and median (inter-quartile range), and presented in the tables. Categorical data were analysed using frequency and percentages, and results are presented in frequency tables and bar charts. Test of significance (p-value) was determined using the chi-square test. A p-value of less than 0.05 was considered significant."""@en ;
+                obo:IAO_0000115 "A textual entity documenting statistical analysis tools and techniques employed."@en ;
+                obo:IAO_0000117 "PERSON: Bill Baumgartner"@en ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/183> ;
+                rdfs:label "statistical analysis textual entity"@en .
+
+
 ###  http://purl.obolibrary.org/obo/IAO_0000644
 obo:IAO_0000644 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000643
+                                ] ;
                 obo:IAO_0000111 "statistical analysis section"@en ;
                 obo:IAO_0000112 "The section labelled 'statistical analysis' in a typical scientific journal article, e.g. Mondo et al. Cardiovasc J Afr. 2013 Mar; 24(2): 28–33. (http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3734881/)"@en ;
                 obo:IAO_0000115 "A part of the document used to describe the statistical methodologies employed in the work presented in the document."@en ;
@@ -2461,7 +3600,11 @@ obo:IAO_0000644 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0000645
 obo:IAO_0000645 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000314 ;
+                rdfs:subClassOf obo:IAO_0000314 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:BFO_0000051 ;
+                                  owl:someValuesFrom obo:IAO_0000306
+                                ] ;
                 obo:IAO_0000111 "tables section"@en ;
                 obo:IAO_0000112 "The section labelled 'tables' in a typical scientific journal article."@en ;
                 obo:IAO_0000115 "A part of a document that contains one or more tables."@en ;
@@ -2494,6 +3637,30 @@ obo:IAO_0000648 rdf:type owl:Class ;
                 obo:IAO_0000117 "Mathias Brochhausen"@en ;
                 obo:IAO_0000118 "ZIP code"@en ;
                 rdfs:label "zone improvement plan code"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000650
+obo:IAO_0000650 rdf:type owl:Class ;
+                rdfs:subClassOf obo:COB_0000035 ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000293 ;
+                                  owl:someValuesFrom obo:IAO_0000030
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty obo:OBI_0000299 ;
+                                  owl:someValuesFrom obo:IAO_0000030
+                                ] ;
+                obo:IAO_0000111 "database extract, transform, and load process"@en ;
+                obo:IAO_0000115 "A planned process which takes as input a database and fills another database by extracting concretizations of information entities from the first, transforming them, and loading the transformed concretizations into the second."@en ;
+                obo:IAO_0000116 "Alan Ruttenberg 12/21/16: We don't define database in IAO, currently, as the bare word is ambiguous. Reasonable interpretations of the word might be the material entity, an information structure, an information content entity. However this definition commits, at least, to there being some material thing which bear concretizations of information entities and that there are new concretizations created during the process.  We consider the ETL process in terms of information entities rather than the concretizations. No committment is made as to whether the specified output."@en ,
+                                "Alan Ruttenberg 12/21/16: Maybe this definition instead: A planned process which takes as input a database and copies concretizations from the first, optionally transforms then copies the result to the second" ;
+                obo:IAO_0000117 "PERSON:Alan Ruttenberg" ;
+                obo:IAO_0000118 "ETL"@en ;
+                obo:IAO_0000119 "WEB:https://en.wikipedia.org/wiki/Extract,_transform,_load" ;
+                obo:IAO_0000233 <https://github.com/information-artifact-ontology/IAO/issues/187> ;
+                rdfs:isDefinedBy <https://github.com/information-artifact-ontology/IAO> ;
+                rdfs:label "database extract, transform, and load process"@en ;
+                foaf:page <https://en.wikipedia.org/wiki/Extract,_transform,_load> .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000651
@@ -2640,6 +3807,18 @@ obo:IAO_0001000 rdf:type owl:Class ;
 
 ###  http://purl.obolibrary.org/obo/IAO_0020000
 obo:IAO_0020000 rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( obo:IAO_0000030
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:IAO_0000219 ;
+                                                             owl:someValuesFrom obo:BFO_0000001
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:OBI_0000312 ;
+                                                             owl:someValuesFrom obo:IAO_0020010
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
                 rdfs:subClassOf obo:IAO_0000030 ;
                 obo:IAO_0000111 "identifier"@en ;
                 obo:IAO_0000115 "An information content entity that is the outcome of a dubbing process and is used to refer to one instance of entity shared by a group of people to refer to that individual entity."@en ;
@@ -2663,6 +3842,27 @@ obo:IAO_0020001 rdf:type owl:Class ;
                 dc:creator "Mathias Brochhausen" ;
                 rdfs:comment "Grapheme is not about anything and hence is likely to not be an information content entity. If a new subclass of GDC for information structure entities is created it should move there."@en ;
                 rdfs:label "grapheme"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0020010
+obo:IAO_0020010 rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( obo:COB_0000035
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty obo:OBI_0000299 ;
+                                                             owl:someValuesFrom obo:IAO_0020000
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf obo:COB_0000035 ;
+                obo:IAO_0000115 "A planned process that provides a reference to an individual entity shared by a group of subscribers to refer to that individual entity."@en ;
+                obo:IAO_0000117 "Justin Whorton"@en ,
+                                "Mathias Brochhausen"@en ;
+                obo:IAO_0000118 "dubbing process"@en ,
+                                "naming"@en ;
+                obo:IAO_0000233 "https://github.com/information-artifact-ontology/IAO/issues/237"@en ;
+                dc:creator "Mathias Brochhausen" ;
+                rdfs:label "identifier creating process"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0020015
@@ -2737,6 +3937,38 @@ When there is no such string, it is almost always because the entities take the 
                              "Many code sets are created for a specific purpose in addition to merely identifying or annotating core ideas of a specified domain."@en ,
                              "The information content entities do not denote each other."@en ;
                 rdfs:label "code set"@en .
+
+
+###  http://purl.obolibrary.org/obo/OBI_0000066
+obo:OBI_0000066 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/OBI_0000471
+obo:OBI_0000471 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/OBI_0500000
+obo:OBI_0500000 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/PATO_0000122
+obo:PATO_0000122 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/PATO_0000125
+obo:PATO_0000125 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/UO_0000001
+obo:UO_0000001 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/UO_0000002
+obo:UO_0000002 rdf:type owl:Class .
+
+
+###  http://purl.obolibrary.org/obo/UO_0000003
+obo:UO_0000003 rdf:type owl:Class .
 
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#Act_of_Air_and_Space_Vehicle_Evaluation
@@ -3073,7 +4305,6 @@ iao-edit:a321_111_aircraft_01 rdf:type owl:NamedIndividual ,
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#a321_111_speed_specification_01
 iao-edit:a321_111_speed_specification_01 rdf:type owl:NamedIndividual ,
                                                   iao-edit:approach_speed_specification ;
-                                         iao-edit:has_measurement_unit "knot" ;
                                          iao-edit:has_numeric_value 142 ;
                                          rdfs:label "a321_111_speed_specification_01" .
 
@@ -3456,6 +4687,38 @@ iao-edit:occ_entry_17_3021 rdf:type owl:NamedIndividual ,
                            iao-edit:own_code 1235 ;
                            rdfs:label "OCC: 17-3021 Aerospace Engineer and Operations Technologist and Technician" ;
                            <http://www.w3.org/2004/02/skos/core#definition> "An engineer bearing the role of OCC: 17-3021 Aerospace Engineer." .
+
+
+###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_2010
+iao-edit:soc_entry_17_2010 rdf:type owl:NamedIndividual ,
+                                    iao-edit:SOC_Occupation_Entry ;
+                           iao-edit:has_SOC_Code "17-2010" ;
+                           iao-edit:has_SOC_Group "Broad" ;
+                           iao-edit:has_SOC_Title "Aerospace Engineers" ;
+                           rdfs:label "SOC: 17-2010 Aerospace Engineers" ;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Broad class of Aerospace Engineers." .
+
+
+###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_2011
+iao-edit:soc_entry_17_2011 rdf:type owl:NamedIndividual ,
+                                    iao-edit:SOC_Occupation_Entry ;
+                           iao-edit:has_SOC_Code "17-2011" ;
+                           iao-edit:has_SOC_Definition "Perform engineering duties in designing, constructing, and testing aircraft, missiles, and spacecraft. May conduct basic and applied research to evaluate adaptability of materials and equipment to aircraft design and manufacture. May recommend improvements in testing equipment and techniques." ;
+                           iao-edit:has_SOC_Group "Detailed" ;
+                           iao-edit:has_SOC_Title "Aerospace Engineers" ;
+                           rdfs:label "SOC: 17-2011 Aerospace Engineers" ;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Perform engineering duties in designing, constructing, and testing aircraft, missiles, and spacecraft. May conduct basic and applied research to evaluate adaptability of materials and equipment to aircraft design and manufacture. May recommend improvements in testing equipment and techniques." .
+
+
+###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_3021
+iao-edit:soc_entry_17_3021 rdf:type owl:NamedIndividual ,
+                                    iao-edit:SOC_Occupation_Entry ;
+                           iao-edit:has_SOC_Code "17-3021" ;
+                           iao-edit:has_SOC_Definition "Operate, install, adjust, and maintain integrated computer/communications systems, consoles, simulators, and other data acquisition, test, and measurement instruments and equipment, which are used to launch, track, position, and evaluate air and space vehicles. May record and interpret test data." ;
+                           iao-edit:has_SOC_Group "Detailed" ;
+                           iao-edit:has_SOC_Title "Aerospace Engineering and Operations Technologists and Technicians" ;
+                           rdfs:label "SOC: 17-3021 Aerospace Engineering and Operations Technologists and Technicians" ;
+                           <http://www.w3.org/2004/02/skos/core#definition> "Operate, install, adjust, and maintain integrated computer/communications systems, consoles, simulators, and other data acquisition, test, and measurement instruments and equipment, which are used to launch, track, position, and evaluate air and space vehicles. May record and interpret test data." .
 
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#test_data_interpretation_01
