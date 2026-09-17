@@ -4305,6 +4305,7 @@ iao-edit:a321_111_aircraft_01 rdf:type owl:NamedIndividual ,
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#a321_111_speed_specification_01
 iao-edit:a321_111_speed_specification_01 rdf:type owl:NamedIndividual ,
                                                   iao-edit:approach_speed_specification ;
+                                         iao-edit:is_measurement_unit iao-edit:knot_01 ;
                                          iao-edit:has_numeric_value 142 ;
                                          rdfs:label "a321_111_speed_specification_01" .
 
@@ -4687,38 +4688,6 @@ iao-edit:occ_entry_17_3021 rdf:type owl:NamedIndividual ,
                            iao-edit:own_code 1235 ;
                            rdfs:label "OCC: 17-3021 Aerospace Engineer and Operations Technologist and Technician" ;
                            <http://www.w3.org/2004/02/skos/core#definition> "An engineer bearing the role of OCC: 17-3021 Aerospace Engineer." .
-
-
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_2010
-iao-edit:soc_entry_17_2010 rdf:type owl:NamedIndividual ,
-                                    iao-edit:SOC_Occupation_Entry ;
-                           iao-edit:has_SOC_Code "17-2010" ;
-                           iao-edit:has_SOC_Group "Broad" ;
-                           iao-edit:has_SOC_Title "Aerospace Engineers" ;
-                           rdfs:label "SOC: 17-2010 Aerospace Engineers" ;
-                           <http://www.w3.org/2004/02/skos/core#definition> "Broad class of Aerospace Engineers." .
-
-
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_2011
-iao-edit:soc_entry_17_2011 rdf:type owl:NamedIndividual ,
-                                    iao-edit:SOC_Occupation_Entry ;
-                           iao-edit:has_SOC_Code "17-2011" ;
-                           iao-edit:has_SOC_Definition "Perform engineering duties in designing, constructing, and testing aircraft, missiles, and spacecraft. May conduct basic and applied research to evaluate adaptability of materials and equipment to aircraft design and manufacture. May recommend improvements in testing equipment and techniques." ;
-                           iao-edit:has_SOC_Group "Detailed" ;
-                           iao-edit:has_SOC_Title "Aerospace Engineers" ;
-                           rdfs:label "SOC: 17-2011 Aerospace Engineers" ;
-                           <http://www.w3.org/2004/02/skos/core#definition> "Perform engineering duties in designing, constructing, and testing aircraft, missiles, and spacecraft. May conduct basic and applied research to evaluate adaptability of materials and equipment to aircraft design and manufacture. May recommend improvements in testing equipment and techniques." .
-
-
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_3021
-iao-edit:soc_entry_17_3021 rdf:type owl:NamedIndividual ,
-                                    iao-edit:SOC_Occupation_Entry ;
-                           iao-edit:has_SOC_Code "17-3021" ;
-                           iao-edit:has_SOC_Definition "Operate, install, adjust, and maintain integrated computer/communications systems, consoles, simulators, and other data acquisition, test, and measurement instruments and equipment, which are used to launch, track, position, and evaluate air and space vehicles. May record and interpret test data." ;
-                           iao-edit:has_SOC_Group "Detailed" ;
-                           iao-edit:has_SOC_Title "Aerospace Engineering and Operations Technologists and Technicians" ;
-                           rdfs:label "SOC: 17-3021 Aerospace Engineering and Operations Technologists and Technicians" ;
-                           <http://www.w3.org/2004/02/skos/core#definition> "Operate, install, adjust, and maintain integrated computer/communications systems, consoles, simulators, and other data acquisition, test, and measurement instruments and equipment, which are used to launch, track, position, and evaluate air and space vehicles. May record and interpret test data." .
 
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#test_data_interpretation_01
