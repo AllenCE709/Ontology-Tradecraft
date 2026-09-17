@@ -931,6 +931,12 @@ iao-edit:has_mean_wage_PRSE rdf:type owl:DatatypeProperty ;
                             rdfs:label "has mean wage PRSE" .
 
 
+###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#has_measurement_unit
+iao-edit:has_measurement_unit rdf:type owl:DatatypeProperty ;
+                              rdfs:label "has measurement unit" ;
+                              <http://www.w3.org/2004/02/skos/core#definition> "states the unit of measure" .
+
+
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#has_model_BADA
 iao-edit:has_model_BADA rdf:type owl:DatatypeProperty ;
                         rdfs:domain iao-edit:aircraft ;
@@ -1370,33 +1376,6 @@ obo:IAO_0000034 rdf:type owl:Class ;
                 rdfs:label "time trigger"@en .
 
 
-###  http://purl.obolibrary.org/obo/IAO_0000037
-obo:IAO_0000037 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "dot plot"@en ;
-                obo:IAO_0000112 "Dot plot of SSC-H and FSC-H."@en ;
-                obo:IAO_0000114 obo:IAO_0000002 ;
-                obo:IAO_0000115 "A dot plot is a report graph which is a graphical representation of data where each data point is represented by a single dot placed on coordinates corresponding to data point values in particular dimensions."@en ;
-                obo:IAO_0000117 "person:Allyson Lister"@en ,
-                                "person:Chris Stoeckert"@en ;
-                obo:IAO_0000119 "OBI_0000123"@en ,
-                                "group:OBI"@en ;
-                rdfs:label "dot plot"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000038
-obo:IAO_0000038 rdf:type owl:Class ;
-                obo:IAO_0000111 "graph"@en ;
-                obo:IAO_0000114 obo:IAO_0000125 ;
-                obo:IAO_0000115 "A diagram that presents one or more tuples of information by mapping those tuples in to a two dimensional space in a non arbitrary way."@en ;
-                obo:IAO_0000117 "PERSON: Lawrence Hunter"@en ,
-                                "person:Alan Ruttenberg"@en ,
-                                "person:Allyson Lister"@en ;
-                obo:IAO_0000119 "OBI_0000240"@en ,
-                                "group:OBI"@en ;
-                rdfs:label "graph"@en .
-
-
 ###  http://purl.obolibrary.org/obo/IAO_0000055
 obo:IAO_0000055 rdf:type owl:Class ;
                 rdfs:subClassOf obo:IAO_0000001 ;
@@ -1409,20 +1388,6 @@ obo:IAO_0000055 rdf:type owl:Class ;
                 obo:IAO_0000119 "OBI_0500021"@en ,
                                 "PRS"@en ;
                 rdfs:label "rule"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000057
-obo:IAO_0000057 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "contour plot"@en ;
-                obo:IAO_0000112 "Contour plot of SSC-H, FSC-H, and FL1-H."@en ;
-                obo:IAO_0000114 obo:IAO_0000002 ;
-                obo:IAO_0000116 "generically_dependent_continuants"@en ;
-                obo:IAO_0000117 "person:Allyson Lister"@en ,
-                                "person:Chris Stoeckert"@en ;
-                obo:IAO_0000119 "OBI_0000246"@en ,
-                                "group:Flow Cytometry community"@en ;
-                rdfs:label "contour plot"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000064
@@ -1452,20 +1417,6 @@ obo:IAO_0000065 rdf:type owl:Class ;
                 obo:IAO_0000119 "OBI_0000199"@en ,
                                 "group:OBI"@en ;
                 rdfs:label "software interpreter"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000079
-obo:IAO_0000079 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "density plot"@en ;
-                obo:IAO_0000112 "Density plot of SSC-H and FSC-H."@en ;
-                obo:IAO_0000114 obo:IAO_0000002 ;
-                obo:IAO_0000115 "A density plot is a report graph which is a graphical representation of data where the tint of a particular pixel corresponds to some kind of function corresponding the the amount of data points relativelly with their distance from the the pixel."@en ;
-                obo:IAO_0000117 "person:Allyson Lister"@en ,
-                                "person:Chris Stoeckert"@en ;
-                obo:IAO_0000119 "OBI_0000179"@en ,
-                                "group:Flow Cytometry community"@en ;
-                rdfs:label "density plot"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000096
@@ -1635,105 +1586,8 @@ obo:IAO_0000178 rdf:type owl:Class ;
                 rdfs:label "material information bearer"@en .
 
 
-###  http://purl.obolibrary.org/obo/IAO_0000179
-obo:IAO_0000179 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "histogram"@en ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 """A histogram is a report graph which is a statistical description of a
-distribution in terms of occurrence frequencies of different event classes."""@en ;
-                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
-                                "PERSON:James Malone"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000119 "GROUP:OBI"@en ;
-                rdfs:label "histogram"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000180
-obo:IAO_0000180 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "heatmap"@en ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 """A heatmap is a report graph which is a graphical representation of data
-where the values taken by a variable(s) are shown as colors in a
-two-dimensional map."""@en ;
-                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
-                                "PERSON:James Malone"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000119 "GROUP:OBI"@en ;
-                rdfs:label "heatmap"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000181
-obo:IAO_0000181 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "Venn diagram"@en ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 """A Venn diagram is a report graph showing all hypothetically possible
-logical relations between a finite collection of sets."""@en ;
-                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
-                                "PERSON:James Malone"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/Venn_diagram"@en ;
-                rdfs:label "Venn diagram"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000183
-obo:IAO_0000183 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "dendrogram"@en ;
-                obo:IAO_0000112 """Dendrograms are often used in computational biology to
-illustrate the clustering of genes."""@en ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 """A dendrogram is a report graph which is a tree diagram
-frequently used to illustrate the arrangement of the clusters produced by a
-clustering algorithm."""@en ;
-                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
-                                "PERSON:James Malone"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/Dendrogram"@en ;
-                rdfs:label "dendrogram"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000184
-obo:IAO_0000184 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "scatter plot"@en ;
-                obo:IAO_0000112 "Comparison of gene expression values in two samples can be displayed in a scatter plot"@en ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 "A scatterplot is a graph which uses Cartesian coordinates to display values for two variables for a set of data. The data is displayed as a collection of points, each having the value of one variable determining the position on the horizontal axis and the value of the other variable determining the position on the vertical axis."@en ;
-                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
-                                "PERSON:James Malone"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000118 "scattergraph"@en ;
-                obo:IAO_0000119 "WEB: http://en.wikipedia.org/wiki/Scatterplot"@en ;
-                rdfs:label "scatter plot"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000185
-obo:IAO_0000185 rdf:type owl:Class ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 "A photograph is created by projecting an image onto a photosensitive surface such as a chemically treated plate or film, CCD receptor, etc."@en ;
-                obo:IAO_0000117 "PERSON:Alan Ruttenberg"@en ,
-                                "PERSON:Joanne Luciano"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000119 "WEB: http://en.wiktionary.org/wiki/photograph"@en ;
-                rdfs:label "photograph"@en .
-
-
 ###  http://purl.obolibrary.org/obo/IAO_0000186
 obo:IAO_0000186 rdf:type owl:Class ;
-                owl:equivalentClass [ owl:intersectionOf ( obo:BFO_0000040
-                                                           [ rdf:type owl:Restriction ;
-                                                             owl:onProperty obo:RO_0000053 ;
-                                                             owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                                  owl:onProperty obo:RO_0000059 ;
-                                                                                  owl:someValuesFrom obo:IAO_0000185
-                                                                                ]
-                                                           ]
-                                                         ) ;
-                                      rdf:type owl:Class
-                                    ] ;
                 obo:IAO_0000111 "photographic print"@en ;
                 obo:IAO_0000114 obo:IAO_0000125 ;
                 obo:IAO_0000115 "A photographic print is a material entity upon which a photograph generically depends."@en ;
@@ -2110,21 +1964,6 @@ obo:IAO_0000442 rdf:type owl:Class ;
                 obo:IAO_0000117 "PERSON: Alan Ruttenberg"@en ,
                                 "PERSON: Melanie Courtot"@en ;
                 rdfs:label "author role"@en .
-
-
-###  http://purl.obolibrary.org/obo/IAO_0000573
-obo:IAO_0000573 rdf:type owl:Class ;
-                rdfs:subClassOf obo:IAO_0000038 ;
-                obo:IAO_0000111 "line graph"@en ;
-                obo:IAO_0000114 obo:IAO_0000122 ;
-                obo:IAO_0000115 """A line graph is a type of graph created by connecting a series of data
-points together with a line."""@en ;
-                obo:IAO_0000117 "PERSON:Chris Stoeckert"@en ,
-                                "PERSON:Melanie Courtot"@en ;
-                obo:IAO_0000118 "line chart"@en ;
-                obo:IAO_0000119 "GROUP:OBI"@en ,
-                                "WEB: http://en.wikipedia.org/wiki/Line_chart"@en ;
-                rdfs:label "line graph"@en .
 
 
 ###  http://purl.obolibrary.org/obo/IAO_0000577
@@ -3234,6 +3073,7 @@ iao-edit:a321_111_aircraft_01 rdf:type owl:NamedIndividual ,
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#a321_111_speed_specification_01
 iao-edit:a321_111_speed_specification_01 rdf:type owl:NamedIndividual ,
                                                   iao-edit:approach_speed_specification ;
+                                         iao-edit:has_measurement_unit "knot" ;
                                          iao-edit:has_numeric_value 142 ;
                                          rdfs:label "a321_111_speed_specification_01" .
 
@@ -3616,38 +3456,6 @@ iao-edit:occ_entry_17_3021 rdf:type owl:NamedIndividual ,
                            iao-edit:own_code 1235 ;
                            rdfs:label "OCC: 17-3021 Aerospace Engineer and Operations Technologist and Technician" ;
                            <http://www.w3.org/2004/02/skos/core#definition> "An engineer bearing the role of OCC: 17-3021 Aerospace Engineer." .
-
-
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_2010
-iao-edit:soc_entry_17_2010 rdf:type owl:NamedIndividual ,
-                                    iao-edit:SOC_Occupation_Entry ;
-                           iao-edit:has_SOC_Code "17-2010" ;
-                           iao-edit:has_SOC_Group "Broad" ;
-                           iao-edit:has_SOC_Title "Aerospace Engineers" ;
-                           rdfs:label "SOC: 17-2010 Aerospace Engineers" ;
-                           <http://www.w3.org/2004/02/skos/core#definition> "Broad class of Aerospace Engineers." .
-
-
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_2011
-iao-edit:soc_entry_17_2011 rdf:type owl:NamedIndividual ,
-                                    iao-edit:SOC_Occupation_Entry ;
-                           iao-edit:has_SOC_Code "17-2011" ;
-                           iao-edit:has_SOC_Definition "Perform engineering duties in designing, constructing, and testing aircraft, missiles, and spacecraft. May conduct basic and applied research to evaluate adaptability of materials and equipment to aircraft design and manufacture. May recommend improvements in testing equipment and techniques." ;
-                           iao-edit:has_SOC_Group "Detailed" ;
-                           iao-edit:has_SOC_Title "Aerospace Engineers" ;
-                           rdfs:label "SOC: 17-2011 Aerospace Engineers" ;
-                           <http://www.w3.org/2004/02/skos/core#definition> "Perform engineering duties in designing, constructing, and testing aircraft, missiles, and spacecraft. May conduct basic and applied research to evaluate adaptability of materials and equipment to aircraft design and manufacture. May recommend improvements in testing equipment and techniques." .
-
-
-###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#soc_entry_17_3021
-iao-edit:soc_entry_17_3021 rdf:type owl:NamedIndividual ,
-                                    iao-edit:SOC_Occupation_Entry ;
-                           iao-edit:has_SOC_Code "17-3021" ;
-                           iao-edit:has_SOC_Definition "Operate, install, adjust, and maintain integrated computer/communications systems, consoles, simulators, and other data acquisition, test, and measurement instruments and equipment, which are used to launch, track, position, and evaluate air and space vehicles. May record and interpret test data." ;
-                           iao-edit:has_SOC_Group "Detailed" ;
-                           iao-edit:has_SOC_Title "Aerospace Engineering and Operations Technologists and Technicians" ;
-                           rdfs:label "SOC: 17-3021 Aerospace Engineering and Operations Technologists and Technicians" ;
-                           <http://www.w3.org/2004/02/skos/core#definition> "Operate, install, adjust, and maintain integrated computer/communications systems, consoles, simulators, and other data acquisition, test, and measurement instruments and equipment, which are used to launch, track, position, and evaluate air and space vehicles. May record and interpret test data." .
 
 
 ###  http://purl.obolibrary.org/obo/iao/iao-edit.owl#test_data_interpretation_01
