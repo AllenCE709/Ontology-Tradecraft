@@ -6,6 +6,7 @@ import json
 import pandas as pd
 from dateutil import parser as dateparser
 import datetime as _dt
+import numpy as np
 
 # ---------- Paths resolved relative to this script ----------
 SCRIPT_DIR = Path(__file__).resolve().parent          # .../src/scripts
@@ -13,7 +14,7 @@ SRC_DIR    = SCRIPT_DIR.parent                         # .../src
 DATA_DIR   = SRC_DIR / "data"                          # .../src/data
 IN_A       = DATA_DIR / "sensor_A.csv"
 IN_B       = DATA_DIR / "sensor_B.json"
-IN_C       = DATA_DIR / "sensor_C.csv"
+#IN_C       = DATA_DIR / "sensor_C.csv"
 OUT        = DATA_DIR / "readings_normalized.csv"
 
 CANON = ["artifact_id", "sdc_kind", "unit_label", "value", "timestamp"]
@@ -159,11 +160,18 @@ def normalize_and_clean(df: pd.DataFrame) -> pd.DataFrame:
         df[col] = df[col].astype(str).str.strip()
 
     # Normalize labels
+    df["artifact_id"] = df["artifact_id"].str.replace(" ", "-", regex=False).str.strip("-")
     df["sdc_kind"] = df["sdc_kind"].apply(_norm_kind)
     df["unit_label"] = df["unit_label"].apply(_norm_unit)
 
     # Coerce types
-    df["value"] = df["value"].apply(_to_float)
+    df["value"] = df["value"].apply(_to_float).round(1)
+    df["value"] = np.where(df["unit_label"] == "kPa", (df["value"] / 6.895).round(1), df["value"])
+    df["unit_label"] = np.where(df["unit_label"] == "kPa", "psi", df["unit_label"])
+
+    df["value"] = np.where(df["unit_label"] == "F", ((df["value"] - 32) * (5/9)).round(1), df["value"])
+    df["unit_label"] = np.where(df["unit_label"] == "F", "C", df["unit_label"])
+
     df["timestamp"] = df["timestamp"].apply(_to_iso_utc)
 
     # Diagnostics
@@ -184,6 +192,10 @@ def normalize_and_clean(df: pd.DataFrame) -> pd.DataFrame:
     # Sort deterministically
     df = df.sort_values(["artifact_id", "timestamp"]).reset_index(drop=True)
 
+    #drop duplicates
+    df = df.drop_duplicates(subset=["artifact_id", "sdc_kind", "value", "timestamp"])
+
+
     # Reorder columns
     df = df[CANON]
     return df
@@ -192,16 +204,16 @@ def normalize_and_clean(df: pd.DataFrame) -> pd.DataFrame:
 def main():
     print("[paths] A:", IN_A)
     print("[paths] B:", IN_B)
-    print("[paths] C:", IN_C)
+   # print("[paths] C:", IN_C)
     df_a = load_sensor_a(IN_A)
     df_b = load_sensor_b(IN_B)
-    df_c = load_sensor_a(IN_C)
+   # df_c = load_sensor_a(IN_C)
 
     print(f"[normalize_readings] Input A rows: {len(df_a)}")
     print(f"[normalize_readings] Input B rows: {len(df_b)}")
-    print(f"[normalize_readings] Input C rows: {len(df_c)}")
+   # print(f"[normalize_readings] Input C rows: {len(df_c)}")
 
-    combined = pd.concat([df_a, df_b, df_c], ignore_index=True)
+    combined = pd.concat([df_a, df_b], ignore_index=True)
     cleaned = normalize_and_clean(combined)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
