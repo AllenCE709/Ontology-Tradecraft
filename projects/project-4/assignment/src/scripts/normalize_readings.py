@@ -167,7 +167,9 @@ def normalize_and_clean(df: pd.DataFrame) -> pd.DataFrame:
     # Coerce types
     df["value"] = df["value"].apply(_to_float).round(1)
     df["value"] = np.where(df["unit_label"] == "psi", (df["value"] * 6.895).round(1), df["value"])
-    df["unit_label"] = np.where(df["unit_label"] == "psi", "kPa", df["unit_label"])
+    df["unit_label"] = np.where(df["unit_label"] == "psi", "Pa", df["unit_label"])
+#call kPa PA, just to test
+    df["unit_label"] = np.where(df["unit_label"] == "kPa", "Pa", df["unit_label"])
 
     df["value"] = np.where(df["unit_label"] == "F", ((df["value"] - 32) * (5/9)).round(1), df["value"])
     df["unit_label"] = np.where(df["unit_label"] == "F", "C", df["unit_label"])
